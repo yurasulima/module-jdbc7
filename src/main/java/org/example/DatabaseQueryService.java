@@ -3,10 +3,7 @@ package org.example;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +30,7 @@ public class DatabaseQueryService {
         List<FindYoungestEldestWorkers> result = new ArrayList<>();
 
         Connection connection = Database.getInstance().getConnection();
-        Statement statement = connection.createStatement();
+        PreparedStatement statement = connection.prepareStatement(sql);
 
         ResultSet resultSet = statement.executeQuery(sql);
         while(resultSet.next()) {
@@ -57,7 +54,7 @@ public class DatabaseQueryService {
         List<FindMaxSalaryWorker> result = new ArrayList<>();
 
         Connection connection = Database.getInstance().getConnection();
-        Statement statement = connection.createStatement();
+        PreparedStatement statement = connection.prepareStatement(sql);
 
         ResultSet resultSet = statement.executeQuery(sql);
         while(resultSet.next()) {
@@ -80,7 +77,7 @@ public class DatabaseQueryService {
         List<FindLongestProject> result = new ArrayList<>();
 
         Connection connection = Database.getInstance().getConnection();
-        Statement statement = connection.createStatement();
+        PreparedStatement statement = connection.prepareStatement(sql);
 
         ResultSet resultSet = statement.executeQuery(sql);
         while(resultSet.next()) {
@@ -101,7 +98,7 @@ public class DatabaseQueryService {
         List<MaxProjectCountClient> result = new ArrayList<>();
 
         Connection connection = Database.getInstance().getConnection();
-        Statement statement = connection.createStatement();
+        PreparedStatement statement = connection.prepareStatement(sql);
 
         ResultSet resultSet = statement.executeQuery(sql);
         while(resultSet.next()) {
